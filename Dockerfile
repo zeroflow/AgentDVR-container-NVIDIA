@@ -1,9 +1,9 @@
-FROM nvidia/cuda:12.1.1-runtime-ubuntu22.04
+FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
 # Based on the works of LostKiwi1, updated to a newer version of AgentDVR / CUDA / ...
 # https://www.reddit.com/r/ispyconnect/comments/omkq2c/dockerfile_for_agent_dvr_with_nvidia_decoding/
 
-ARG URL_BINARIES="https://ispyfiles.azureedge.net/downloads/Agent_Linux64_4_7_6_0.zip"
+ARG URL_BINARIES="https://ispyfiles.azureedge.net/downloads/Agent_Linux64_4_8_1_0.zip"
 ARG DEBIAN_FRONTEND=noninteractive
 ARG TZ=Austria/Vienna
 
@@ -19,8 +19,6 @@ RUN apt-get update \
 RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
     && chmod +x ./dotnet-install.sh \
     && ./dotnet-install.sh --version latest
-
-# Install cybermax's ffmpeg with nvidia
 
 # Set NVIDAI capabilities
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
